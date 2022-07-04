@@ -1,29 +1,16 @@
 import Link from 'next/link'
-import Image from 'next/Image'
-import Head from 'next/Head'
+import Image from 'next/image'
+import Head from 'next/head'
+import Layout from '../../components/layout'
 
 export default function CurrentEvents() {
     return (
-        <>
+        <Layout>
             <Head>
                 <title>Current Events</title>
             </Head>
             <h1>Current Events</h1>
-            <h2>
-                <Link href={"/"}>
-                    <a>Back to home</a>
-                </Link>
-            </h2>
-            <MyComponent/>
-        </>
+            <p>Lorem ipsum</p>
+        </Layout>
     )
 }
-
-const MyComponent = () => (
-    <Image
-        src={"/images/pfp.png"}
-        height={200}
-        width={200}
-        alt={"Stan the man"}
-    />
-)
