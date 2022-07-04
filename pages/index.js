@@ -26,11 +26,9 @@ export default function Home() {
                         href="https://fonts.googleapis.com/icon?family=Material+Icons"
                     />
 
-                    <Script
-                        async
-                        src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9928063674893352"}
-                        crossOrigin={"anonymous"}
-                    />
+                    <script async
+                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9928063674893352"
+                            crossOrigin="anonymous"></script>
                 </Head>
 
                 <h1>Stan Runge</h1>
