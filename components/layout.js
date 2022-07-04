@@ -3,6 +3,8 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import ButtonAppBar from "./ButtonAppBar";
+import BottomNavigation from '@mui/material/BottomNavigation';
 
 const name = 'Stan';
 export const siteTitle = 'Next.js Sample Website';
@@ -24,7 +26,11 @@ export default function Layout({ children, home }) {
                 />
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
+                <title>Unnamed page</title>
             </Head>
+
+            <ButtonAppBar title={"hello"}/>
+
             <header className={styles.header}>
                 {home ? (
                     <>
@@ -68,6 +74,7 @@ export default function Layout({ children, home }) {
                     </Link>
                 </div>
             )}
+            <footer>With ❤️ from Stan</footer>
         </div>
     );
 }
