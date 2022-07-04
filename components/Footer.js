@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Image from 'next/image';
 
 const useStyles = makeStyles((theme) => ({
     rootBox: {
@@ -51,7 +52,7 @@ export default function Footer(props) {
     let brand;
 
     if (content.brand.image) {
-        brand = <img src={ content.brand.image } alt="" width={ content.brand.width } />;
+        brand = <Image src={content.brand.image} alt={""} width={content.brand.width}></Image>;
     } else {
         brand = content.brand.text || '';
     }

@@ -12,7 +12,7 @@ export default function Home() {
             <ButtonAppBar/>
             <div className={styles.container}>
                 <Head>
-                    <title>Stan's website</title>
+                    <title>Stan&#39;s website</title>
                     <meta name="description" content="Home page for Stan's personal website"/>
                     <meta name="viewport" content="initial-scale=1, width=device-width"/>
                     <link rel="icon" href="/favicon.ico"/>
