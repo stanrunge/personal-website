@@ -16,13 +16,13 @@ export default function AboutMe() {
                             className={utilStyles.borderCircle}
                             height={108}
                             width={108}
-                            alt={name}
+                            alt={"Stan's profile picture"}
                         />
                     </a>
                 </Link>
                 <h2 className={utilStyles.headingLg}>
                     <Link href="/">
-                        <a className={utilStyles.colorInherit}>{name}</a>
+                        <a className={utilStyles.colorInherit}>{"Stan Runge"}</a>
                     </Link>
                 </h2>
 
