@@ -9,7 +9,7 @@ import ActionAreaCard from "../components/ActionAreaCard";
 export default function Home() {
     return (
         <div>
-            <ButtonAppBar/>
+            <ButtonAppBar title={"Home"}/>
             <div className={styles.container}>
                 <Head>
                     <title>Stan&#39;s website</title>
