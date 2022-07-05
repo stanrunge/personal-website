@@ -5,10 +5,11 @@ import Script from 'next/script'
 import styles from '../styles/Home.module.css'
 import ButtonAppBar from "../components/ButtonAppBar";
 import ActionAreaCard from "../components/ActionAreaCard";
+import Layout from "../components/layout";
 
 export default function Home() {
     return (
-        <div>
+        <Layout>
             <ButtonAppBar title={"Home"}/>
             <div className={styles.container}>
                 <Head>
@@ -37,6 +38,6 @@ export default function Home() {
                 <ActionAreaCard title={"CES Gaming"} description={"Organization for hosting videogame tournaments."}/>
                 <ActionAreaCard title={"OpenBionicReading"} description={"Chrome plugin for easier text reading."}/>
             </div>
-        </div>
+        </Layout>
     )
 }
