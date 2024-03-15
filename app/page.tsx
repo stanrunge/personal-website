@@ -29,6 +29,25 @@ export default async function Index() {
         <p>BSc Software Engineering</p>
         <p>Minor: Deep Learning</p>
       </div>
+
+      <div className="text-center my-10">
+        <h2 className="text-3xl">Links</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/stanrunge" className="text-blue-500">
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://linkedin.com/in/stanrunge"
+              className="text-blue-500"
+            >
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
