@@ -3,11 +3,15 @@ export default async function Index() {
     <div>
       <div className="flex items-center place-content-center gap-10 py-10">
         <img src="stan.jpg" alt="Stan Runge" className="rounded-xl size-64" />
-        <h1 className="text-5xl">Stan Runge</h1>
+        <div className="text-center">
+          <h1 className="text-5xl my-3">Stan Runge</h1>
+          <p>stan@stanrunge.dev</p>
+          <p>The Hague, Netherlands</p>
+        </div>
       </div>
 
       <div className="text-center my-10">
-        <h2>Experience</h2>
+        <h2 className="text-3xl">Experience</h2>
         <b>Founder</b>
         <p>Vash Software</p>
       </div>
@@ -20,8 +24,10 @@ export default async function Index() {
         <p>Finance Plus</p>
       </div>
       <div className="text-center my-10">
-        <h2>Education</h2>
+        <h2 className="text-3xl">Education</h2>
         <b>The Hague University of Applied Sciences</b>
+        <p>BSc Software Engineering</p>
+        <p>Minor: Deep Learning</p>
       </div>
     </div>
   );
