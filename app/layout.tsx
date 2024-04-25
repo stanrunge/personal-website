@@ -1,5 +1,6 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import TabItem from "@/components/TabItem";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -18,7 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body>{children}</body>
+      <body>
+        <div className="flex justify-center gap-5 my-5 font-bold">
+          <TabItem targetPath="/" text="Home" />
+          <TabItem targetPath="/blog" text="Blog" />
+        </div>
+
+        {children}
+      </body>
     </html>
   );
 }
