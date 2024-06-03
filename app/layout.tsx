@@ -22,7 +22,9 @@ export default function RootLayout({
       <body>
         <div className="flex justify-center gap-5 my-5 font-bold">
           <TabItem targetPath="/" text="Home" />
-          <TabItem targetPath="/blog" text="Blog" />
+          <TabItem targetPath="/projects" text="Projects" />
+          <TabItem targetPath="/publications" text="Publications" />
+          <TabItem targetPath="/certificates" text="Certificates" />
         </div>
 
         {children}
