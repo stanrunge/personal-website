@@ -20,11 +20,28 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body>
-        <div className="flex justify-center gap-5 my-5 font-bold">
-          <TabItem targetPath="/" text="Home" />
-          <TabItem targetPath="/projects" text="Projects" />
-          <TabItem targetPath="/publications" text="Publications" />
-          <TabItem targetPath="/certificates" text="Certificates" />
+        <div className="flex justify-between my-5 font-bold mx-5">
+          <div>
+            <h1 className="text-2xl">
+              <a href="/">Stan Runge</a>
+            </h1>
+          </div>
+          <div className="flex justify-center gap-5">
+            <TabItem targetPath="/projects" text="Projects" />
+            <TabItem targetPath="/publications" text="Publications" />
+            <TabItem targetPath="/certificates" text="Certificates" />
+          </div>
+          <div className="flex justify-center gap-5">
+            <a href="https://github.com/stanrunge" className="text-blue-500">
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/stanrunge"
+              className="text-blue-500"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
 
         {children}
