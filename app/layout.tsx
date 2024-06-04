@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <div
           style={{
-            backgroundImage: `url(${metadata.metadataBase}/moon.jpeg)`,
+            backgroundImage: `url(${metadata.metadataBase}/moon.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(5px)",
