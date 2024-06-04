@@ -29,25 +29,6 @@ export default async function Index() {
         <p>BSc Software Engineering</p>
         <p>Minor: Deep Learning</p>
       </div>
-
-      <div className="text-center my-10">
-        <h2 className="text-3xl">Skills</h2>
-        <b>Programming Languages</b>
-        <p>JavaScript, TypeScript, Python, C#, SQL</p>
-
-        <div className="text-center my-10">
-          <b>Frameworks/Libraries</b>
-          <p>
-            React, Next.js, Node.js, .NET, SvelteKit, SQL Server, PostgreSQL,
-            MySQL
-          </p>
-        </div>
-
-        <div className="text-center my-10">
-          <b>Natural Languages</b>
-          <p>English, Dutch, Spanish, Papiamentu, Korean</p>
-        </div>
-      </div>
     </div>
   );
 }
