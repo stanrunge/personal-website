@@ -1,7 +1,7 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import TabItem from "@/components/TabItem";
-import { MdiGithub } from "./components/MdiGithub";
+import { MdiGithub } from "../components/MdiGithub";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -20,7 +20,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body>
+      <body
+        style={{
+          position: "relative",
+          color: "white",
+          backgroundColor: "rgba(0, 0, 0, 1)",
+        }}
+      >
+        <div
+          style={{
+            backgroundImage: `url(${metadata.metadataBase}/moon.jpeg)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(5px)",
+            position: "fixed", // Changed from 'absolute' to 'fixed'
+            top: 0,
+            left: -46,
+            width: "100%",
+            height: "100%",
+            zIndex: -1,
+          }}
+        />
         <div className="flex justify-between my-5 font-bold mx-5">
           <div>
             <h1 className="text-2xl">
@@ -31,7 +51,7 @@ export default function RootLayout({
             <TabItem targetPath="/projects" text="Projects" />
             <TabItem targetPath="/publications" text="Publications" />
             <TabItem targetPath="/certificates" text="Certificates" />
-            {/* <TabItem targetPath="/cokno" text="CoKno" /> */}
+            <TabItem targetPath="/cokno" text="CoKno" />
           </div>
           <div className="flex justify-center gap-5">
             <a href="https://github.com/stanrunge" className="text-blue-500">

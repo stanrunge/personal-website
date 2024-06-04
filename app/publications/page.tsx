@@ -1,7 +1,7 @@
 export default async function Page() {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-4xl">Publications (1)</h1>
+      <h1 className="text-4xl my-5">Publications (1)</h1>
       <div className="my-5">
         <h2 className="text-2xl">Presentations (1)</h2>
         <ul>
@@ -9,7 +9,7 @@ export default async function Page() {
         </ul>
       </div>
 
-      {/* <div className="my-5">
+      <div className="my-5">
         <h2 className="text-2xl">Literature Reviews (19)</h2>
         <ul>
           <li>Deep Learning with Python</li>
@@ -32,7 +32,7 @@ export default async function Page() {
           <li>Good Strategy Bad Strategy</li>
           <li>Neuroscience: Exploring the Brain</li>
         </ul>
-      </div> */}
+      </div>
 
       {/* <h2>Blog posts (0)</h2> */}
     </div>

@@ -1,7 +1,7 @@
 export default async function Page() {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-4xl">Certificates (1)</h1>
+      <h1 className="text-4xl my-5">Certificates (1)</h1>
 
       {[1, 2, 3].map((certificate) => (
         <div className="text-center my-10">
