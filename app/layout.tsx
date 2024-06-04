@@ -1,6 +1,7 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import TabItem from "@/components/TabItem";
+import { MdiGithub } from "./components/MdiGithub";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -30,10 +31,11 @@ export default function RootLayout({
             <TabItem targetPath="/projects" text="Projects" />
             <TabItem targetPath="/publications" text="Publications" />
             <TabItem targetPath="/certificates" text="Certificates" />
+            {/* <TabItem targetPath="/cokno" text="CoKno" /> */}
           </div>
           <div className="flex justify-center gap-5">
             <a href="https://github.com/stanrunge" className="text-blue-500">
-              GitHub
+              <MdiGithub />
             </a>
             <a
               href="https://linkedin.com/in/stanrunge"
