@@ -5,7 +5,11 @@ export default async function Page() {
       <div className="my-5">
         <h2 className="text-2xl">Presentations (1)</h2>
         <ul>
-          <li>Quantum Vision Transformer</li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=cTi5Amaqf-Q">
+              Quantum Vision Transformer
+            </a>
+          </li>
         </ul>
       </div>
 
