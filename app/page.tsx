@@ -32,10 +32,8 @@ export default async function Index() {
 
       <div className="text-center my-10">
         <h2 className="text-3xl">Skills</h2>
-        <div className="text-center my-10">
-          <b>Programming Languages</b>
-          <p>JavaScript, TypeScript, Python, C#, SQL</p>
-        </div>
+        <b>Programming Languages</b>
+        <p>JavaScript, TypeScript, Python, C#, SQL</p>
 
         <div className="text-center my-10">
           <b>Frameworks/Libraries</b>
