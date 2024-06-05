@@ -1,7 +1,7 @@
 export default async function Page() {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-4xl my-5">Publications (1)</h1>
+      <h1 className="text-4xl my-5">Publications</h1>
       <div className="my-5">
         <h2 className="text-2xl">Presentations (1)</h2>
         <ul>
