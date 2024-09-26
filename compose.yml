@@ -30,6 +30,12 @@ services:
       - "traefik.http.routers.priceless-newton.rule=Host(`stanrunge.dev`)"
       - "traefik.http.routers.localhost.rule=Host(`localhost`)"
       - "traefik.http.services.priceless-newton.loadbalancer.server.port=3000"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./packages/web_new
+          ignore:
+            - node_modules/
 
 volumes:
   db-data:
