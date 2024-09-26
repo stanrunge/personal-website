@@ -1,0 +1,35 @@
+services:
+  traefik:
+    image: traefik:v2.5
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  frontend:
+    build: ./packages/web_new
+    container_name: personal-website
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.priceless-newton.rule=Host(`stanrunge.dev`)"
+      - "traefik.http.routers.localhost.rule=Host(`localhost`)"
+      - "traefik.http.services.priceless-newton.loadbalancer.server.port=3000"
+
+volumes:
+  db-data:

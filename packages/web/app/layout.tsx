@@ -52,7 +52,6 @@ export default function RootLayout({
             <div className="flex gap-5">
               <TabItem targetPath="/projects" text="Projects" />
               <TabItem targetPath="/publications" text="Publications" />
-              <TabItem targetPath="/certificates" text="Certificates" />
               <TabItem targetPath="/cokno" text="CoKno" />
             </div>
           </div>
