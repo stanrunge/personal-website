@@ -25,6 +25,8 @@ services:
   sveltekit:
     build: ./packages/web
     restart: unless-stopped
+    environment:
+      - ORIGIN=http://localhost
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.personal-website.rule=Host(`stanrunge.dev`)"
