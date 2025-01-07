@@ -21,10 +21,25 @@
 	<tbody>
 		{#each data.tasks as task}
 			<tr>
-				<td>{task.id}</td>
-				<td>{task.name}</td>
-				<td>{task.progress}</td>
-				<td><button>Delete</button></td>
+				<td>
+					<a href={'/progress/' + task.id}>
+						{task.id}
+					</a>
+				</td><td>
+					<a href={'/progress/' + task.id}>
+						{task.name}
+					</a>
+				</td>
+				<td>
+					<a href={'/progress/' + task.id}>
+						{task.progress}
+					</a>
+				</td>
+				<td>
+					<a href={'/progress/' + task.id}>
+						<button>Delete</button>
+					</a>
+				</td>
 			</tr>
 		{/each}</tbody
 	>

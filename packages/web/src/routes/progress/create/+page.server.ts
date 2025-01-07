@@ -5,8 +5,8 @@ export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData()
 
-		await db.insert(tasks).values({ name: data.get('name') })
+		const task = await db.insert(tasks).values({ name: data.get('name') }).returning()
 
-		redirect(303, '/progress')
+		redirect(303, '/progress/' + task[0].id)
 	}
 }
