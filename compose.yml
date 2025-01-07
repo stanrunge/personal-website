@@ -12,28 +12,28 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   db:
-    image: postgres:15
+    image: postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db
+    ports:
+      - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
 
-  frontend:
-    build: ./packages/web_new
-    container_name: personal-website
+  sveltekit:
+    build: ./packages/web
     restart: unless-stopped
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.priceless-newton.rule=Host(`stanrunge.dev`)"
+      - "traefik.http.routers.personal-website.rule=Host(`stanrunge.dev`)"
       - "traefik.http.routers.localhost.rule=Host(`localhost`)"
-      - "traefik.http.services.priceless-newton.loadbalancer.server.port=3000"
+      - "traefik.http.services.personal-website.loadbalancer.server.port=3000"
     develop:
       watch:
         - action: rebuild
-          path: ./packages/web_new
+          path: ./packages/web
           ignore:
             - node_modules/
 
