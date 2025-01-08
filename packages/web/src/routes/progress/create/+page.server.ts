@@ -1,4 +1,5 @@
-import { db, tasks } from "$lib/db/schema"
+import { db } from "$lib/db"
+import { tasks } from "$lib/db/schema"
 import { redirect } from "@sveltejs/kit"
 
 export const actions = {
