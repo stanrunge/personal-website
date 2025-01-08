@@ -23,22 +23,19 @@ services:
       - db-data:/var/lib/postgresql/data
 
   sveltekit:
-    image: oven/bun
-    volumes:
-      - ./packages/web:/app
-    working_dir: /app
-    command: bun run dev --host
+    build: ./packages/web
+    restart: unless-stopped
     environment:
       - ORIGIN=http://localhost
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.personal-website.rule=Host(`stanrunge.dev`)"
       - "traefik.http.routers.localhost.rule=Host(`localhost`)"
-      - "traefik.http.services.personal-website.loadbalancer.server.port=5173"
+      - "traefik.http.services.personal-website.loadbalancer.server.port=3000"
     develop:
       watch:
-        - action: sync
+        - action: rebuild
           path: ./packages/web
-          target: /app
 
 volumes:
   db-data:
