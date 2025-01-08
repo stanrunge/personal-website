@@ -15,7 +15,8 @@
     "test:unit": "vitest",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "seed": "bun src/lib/db/seed.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.49.1",
