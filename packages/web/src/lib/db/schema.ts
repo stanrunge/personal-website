@@ -1,10 +1,5 @@
 import { relations } from 'drizzle-orm';
 import { integer, pgTable, serial, timestamp, varchar } from 'drizzle-orm/pg-core';
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-
-const client = postgres('postgresql://postgres:postgres@db:5432/db');
-export const db = drizzle(client, {});
 
 export const tasks = pgTable('tasks', {
 	id: serial('id').primaryKey(),
