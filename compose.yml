@@ -30,6 +30,7 @@ services:
     command: bun run dev --host
     environment:
       - ORIGIN=http://localhost
+      - DATABASE_URL=${DATABASE_URL}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.localhost.rule=Host(`localhost`)"

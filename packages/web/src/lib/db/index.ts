@@ -1,8 +1,19 @@
 import * as schema from './schema'
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { DB_HOST, DB_USER, DB_PASSWORD } from '$env/static/private';
 
-const client = postgres(process.env.DATABASE_URL!);
-export const db = drizzle(client, { schema });
+export const db = drizzle({
+	schema,
+	connection: {
+		host: DB_HOST,
+		user: DB_USER,
+		password: DB_PASSWORD,
+		database: 'personal-website-db',
+		port: 5432,
+		ssl: {
+			rejectUnauthorized: false
+		}
+	}
+});
 
 
