@@ -36,7 +36,7 @@ jobs:
           docker build \
             --build-arg DB_HOST=${{ secrets.DB_HOST }} \
             --build-arg DB_USER=${{ secrets.DB_USER }} \
-            --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            --build-arg DB_PASSWORD="${{ secrets.DB_PASSWORD }}" \
             -t $ECR_REGISTRY/stan/personal-website:$IMAGE_TAG \
             packages/web
           docker push $ECR_REGISTRY/stan/personal-website:$IMAGE_TAG
@@ -56,4 +56,4 @@ jobs:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: main-service
           cluster: PersonalWebsiteCluster
-          wait-for-service-stability: true         
+          wait-for-service-stability: true
