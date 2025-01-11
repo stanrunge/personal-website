@@ -1,7 +1,8 @@
 import { db } from "$lib/db"
-import { tasksToTopics } from "$lib/db/schema"
+import { tasks, tasksToTopics } from "$lib/db/schema"
+import { eq } from "drizzle-orm"
 
-export const load = async () => {
+export const load = async ({ params }) => {
 	return {
 		task: (await db.query.tasks.findFirst({
 			with: {
@@ -10,7 +11,9 @@ export const load = async () => {
 						topic: true
 					}
 				}
-			}
+			},
+			where: eq(tasks.id, params.id)
+
 		})
 		),
 		topics: await db.query.topics.findMany()
