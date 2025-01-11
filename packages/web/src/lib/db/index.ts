@@ -10,7 +10,9 @@ export const db = drizzle({
 		password: DB_PASSWORD,
 		database: 'personal-website-db',
 		port: 5432,
-		ssl: false
+		ssl: DB_HOST == 'db' ? false : {
+			rejectUnauthorized: false
+		}
 	}
 });
 
