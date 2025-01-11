@@ -12,8 +12,6 @@ export default defineConfig({
 		password: process.env.DB_PASSWORD,
 		database: 'personal-website-db',
 		port: 5432,
-		ssl: {
-			rejectUnauthorized: false
-		}
+		ssl: false
 	}
 });

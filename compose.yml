@@ -16,7 +16,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=db
+      - POSTGRES_DB=personal-website-db
     ports:
       - "5432:5432"
     volumes:
@@ -28,9 +28,7 @@ services:
       - ./packages/web:/app
     working_dir: /app
     command: bun run dev --host
-    environment:
-      - ORIGIN=http://localhost
-      - DATABASE_URL=${DATABASE_URL}
+    env_file: .env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.localhost.rule=Host(`localhost`)"
