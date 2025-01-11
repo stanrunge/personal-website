@@ -1,0 +1,95 @@
+{
+	"taskDefinitionArn": "arn:aws:ecs:eu-west-1:949678216675:task-definition/personal-website:14",
+	"containerDefinitions": [
+		{
+			"name": "web",
+			"image": "949678216675.dkr.ecr.eu-west-1.amazonaws.com/stan/personal-website",
+			"cpu": 0,
+			"portMappings": [
+				{
+					"containerPort": 3000,
+					"hostPort": 3000,
+					"protocol": "tcp"
+				}
+			],
+			"essential": true,
+			"environment": [
+				{
+					"name": "ORIGIN",
+					"value": "https://stanrunge.dev"
+				},
+				{
+					"name": "DATABASE_URL",
+					"value": "postgres://$DATABASE_USERNAME:$DATABASE_PASSWORD@vash-db.c0n0e8svjact.eu-west-1.rds.amazonaws.com:5432/personal-website-db"
+				}
+			],
+			"mountPoints": [],
+			"volumesFrom": [],
+			"secrets": [
+				{
+					"name": "DATABASE_USERNAME",
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!db-16c19530-97ce-43c1-87fc-bb44ac8f77a3-9d5wca:username::"
+				},
+				{
+					"name": "DATABASE_PASSWORD",
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!db-16c19530-97ce-43c1-87fc-bb44ac8f77a3-9d5wca:password::"
+				}
+			],
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "/ecs/personal-website",
+					"awslogs-region": "eu-west-1",
+					"awslogs-stream-prefix": "ecs"
+				}
+			},
+			"systemControls": []
+		}
+	],
+	"family": "personal-website",
+	"executionRoleArn": "arn:aws:iam::949678216675:role/ecsTaskExecutionRole",
+	"networkMode": "awsvpc",
+	"revision": 14,
+	"volumes": [],
+	"status": "ACTIVE",
+	"requiresAttributes": [
+		{
+			"name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+		},
+		{
+			"name": "ecs.capability.execution-role-awslogs"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.ecr-auth"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+		},
+		{
+			"name": "ecs.capability.secrets.asm.environment-variables"
+		},
+		{
+			"name": "ecs.capability.execution-role-ecr-pull"
+		},
+		{
+			"name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+		},
+		{
+			"name": "ecs.capability.task-eni"
+		}
+	],
+	"placementConstraints": [],
+	"compatibilities": [
+		"EC2",
+		"FARGATE"
+	],
+	"requiresCompatibilities": [
+		"FARGATE"
+	],
+	"cpu": "256",
+	"memory": "512",
+	"registeredAt": "2025-01-10T22:52:09.951Z",
+	"registeredBy": "arn:aws:iam::949678216675:user/stan",
+	"enableFaultInjection": false,
+	"tags": []
+}
