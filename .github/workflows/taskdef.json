@@ -54,6 +54,5 @@
 		"FARGATE"
 	],
 	"cpu": "256",
-	"memory": "512",
-	"enableFaultInjection": false
+	"memory": "512"
 }
