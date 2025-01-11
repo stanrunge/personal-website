@@ -6,9 +6,9 @@ COPY package.json bun.lockb ./
 RUN bun install
 COPY . .
 
-ENV DB_HOST=host
-ENV DB_USER=user
-ENV DB_PASSWORD=password
+ARG DB_HOST
+ARG DB_USER
+ARG DB_PASSWORD
 
 
 RUN bun run build
