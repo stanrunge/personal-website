@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+env:
+  DB_HOST: ""
+  DB_USER: ""
+  DB_PASSWORD: ""
+
 jobs:
   build:
     runs-on: ubuntu-latest
