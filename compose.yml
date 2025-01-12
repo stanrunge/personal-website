@@ -14,9 +14,9 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=vash
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=personal-website-db
+      - POSTGRES_DB=personal_website
     ports:
       - "5432:5432"
     volumes:
