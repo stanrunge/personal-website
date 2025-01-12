@@ -43,7 +43,7 @@
 							</td>
 
 							<td class="px-6 py-2 border-b">
-								{task.progress}%
+								{((task.currentPoints / task.totalPoints) * 100).toFixed(1)}%
 							</td>
 							<td class="px-6 py-2 border-b">
 								<button

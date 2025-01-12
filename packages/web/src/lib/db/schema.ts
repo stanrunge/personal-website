@@ -4,6 +4,8 @@ import { integer, pgTable, serial, timestamp, varchar } from 'drizzle-orm/pg-cor
 export const tasks = pgTable('tasks', {
 	id: serial('id').primaryKey(),
 	name: varchar('name', { length: 256 }),
+	currentPoints: integer('current_points').default(0),
+	totalPoints: integer('total_points').default(1),
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at').defaultNow()
 });
