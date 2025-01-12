@@ -28,11 +28,11 @@
 			"secrets": [
 				{
 					"name": "DB_USER",
-					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!db-16c19530-97ce-43c1-87fc-bb44ac8f77a3-9d5wca:username::"
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!cluster-37ddb1be-692f-449c-8384-9c6e31012245-024tQs:username::"
 				},
 				{
 					"name": "DB_PASSWORD",
-					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!db-16c19530-97ce-43c1-87fc-bb44ac8f77a3-9d5wca:password::"
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!cluster-37ddb1be-692f-449c-8384-9c6e31012245-024tQs:password::"
 				}
 			],
 			"logConfiguration": {
