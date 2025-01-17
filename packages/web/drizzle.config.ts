@@ -8,5 +8,6 @@ export default defineConfig({
 	strict: true,
 	dbCredentials: {
 		url: process.env.DB_URL
-	}
+	},
+	schemaFilter: 'personal_website'
 });
