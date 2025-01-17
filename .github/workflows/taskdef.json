@@ -17,22 +17,14 @@
 				{
 					"name": "ORIGIN",
 					"value": "https://stanrunge.dev"
-				},
-				{
-					"name": "DB_HOST",
-					"value": "vash-db.c0n0e8svjact.eu-west-1.rds.amazonaws.com"
 				}
 			],
 			"mountPoints": [],
 			"volumesFrom": [],
 			"secrets": [
 				{
-					"name": "DB_USER",
-					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!cluster-37ddb1be-692f-449c-8384-9c6e31012245-024tQs:username::"
-				},
-				{
-					"name": "DB_PASSWORD",
-					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:rds!cluster-37ddb1be-692f-449c-8384-9c6e31012245-024tQs:password::"
+					"name": "DB_URL",
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:DB_URL-NmGgN8:DB_URL::"
 				}
 			],
 			"logConfiguration": {
