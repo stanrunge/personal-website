@@ -1,8 +1,4 @@
-<script lang="ts">
-	let { data } = $props();
-</script>
+<h1 class="my-8 text-4xl font-bold text-center">Stan Runge</h1>
+<img src="/public/stan.jpg" alt="" />
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<p>Message: {data.message}</p>
+<div></div>
