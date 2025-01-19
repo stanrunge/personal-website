@@ -1,9 +1,30 @@
-// import { myTable, db } from '$lib/db/schema';
-import type { PageServerLoad } from './$types';
+import { AUTH_TOKEN } from '$env/static/private';
 
-export const load = (async () => {
-	// const result = await db.select().from(myTable);
-	return {
-		message: 'Hi :4888829383991292222244343434'
-	};
-}) satisfies PageServerLoad;
+export const actions = {
+	authenticate: async ({ request, cookies }) => {
+		const data = await request.formData();
+
+		const token = data.get('token');
+		if (!token) {
+			return {
+				status: 400,
+				body: { error: 'Missing token' }
+			};
+		}
+
+		if (token !== AUTH_TOKEN) {
+			return {
+				status: 401,
+				body: { error: 'Invalid token' }
+			};
+		}
+
+		cookies.set('token', token, {
+			path: '/'
+		});
+
+		return {
+			success: true
+		};
+	}
+};

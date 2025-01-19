@@ -1,7 +1,8 @@
-import { db } from "$lib/db"
+import { db } from '$lib/db';
 
-export const load = async () => {
+export const load = async ({ cookies }) => {
 	return {
-		tasks: await db.query.tasks.findMany()
-	}
-}
+		tasks: await db.query.tasks.findMany(),
+		editable: cookies.get('token')
+	};
+};

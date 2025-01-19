@@ -1,13 +1,18 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import '../app.css';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
-	export let children: any;
+	const { children }: Props = $props();
+
+	let editModalVisible = $state(false);
 </script>
 
-<!-- outer container, sets background and text color -->
-<div class="min-h-screen bg-black text-white bg-center bg-[url('/moon.jpg')] bg-auto bg-no-repeat">
+<div
+	class="min-h-screen bg-black text-white bg-center bg-[url('/moon.jpg')] bg-auto bg-no-repeat flex flex-col"
+>
 	<nav class="flex justify-between bg-gray-800 items-center px-4 py-2">
 		<div class="m-2">
 			<a href="/" class="font-bold text-xl sm:text-2xl">Stan Runge</a>
@@ -16,7 +21,7 @@
 			<a href="/progress" class="hover:underline">Progress</a>
 			<span>|</span>
 			<div class="flex gap-2 items-center">
-				<a href="mailto:stan@stanrunge.dev" class="hover:text-gray-300">
+				<a href="mailto:stan@stanrunge.dev" class="hover:text-gray-300" aria-label="Mail">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -24,7 +29,7 @@
 						/>
 					</svg>
 				</a>
-				<a href="https://github.com/stanrunge" class="hover:text-gray-300">
+				<a href="https://github.com/stanrunge" class="hover:text-gray-300" aria-label="GitHub">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -37,7 +42,7 @@
 						/>
 					</svg>
 				</a>
-				<a href="https://x.com/stanrunge" class="hover:text-gray-300">
+				<a href="https://x.com/stanrunge" class="hover:text-gray-300" aria-label="X">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -46,7 +51,11 @@
 						/>
 					</svg>
 				</a>
-				<a href="https://linkedin.com/in/stanrunge" class="hover:text-gray-300">
+				<a
+					href="https://linkedin.com/in/stanrunge"
+					class="hover:text-gray-300"
+					aria-label="LinkedIn"
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -62,7 +71,34 @@
 	</nav>
 
 	<!-- page content goes here -->
-	<main class="mx-auto py-8 px-4 max-w-5xl">
+	<main class="mx-auto py-8 px-4 max-w-5xl flex-grow">
 		{@render children?.()}
 	</main>
+
+	<div class="flex justify-end">
+		<button
+			class="p-3 rounded border border-white m-4"
+			onclick={() => (editModalVisible = !editModalVisible)}>Edit</button
+		>
+	</div>
 </div>
+
+{#if editModalVisible}
+	<div
+		class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+		onclick={() => (editModalVisible = false)}
+	>
+		<form
+			class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full flex flex-col items-center"
+			onclick={(e) => e.stopPropagation()}
+			action="/?/authenticate"
+			method="post"
+		>
+			<h2 class="text-lg font-semibold m-4">WHO ARE YOU?!?!?!??!</h2>
+			<input type="text" class="border border-black rounded my-4" name="token" />
+			<button class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+				Authenticate
+			</button>
+		</form>
+	</div>
+{/if}
