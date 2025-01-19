@@ -25,6 +25,10 @@
 				{
 					"name": "DB_URL",
 					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:DB_URL-NmGgN8:DB_URL::"
+				},
+				{
+					"name": "AUTH_TOKEN",
+					"valueFrom": "arn:aws:secretsmanager:eu-west-1:949678216675:secret:personal-website/auth-token-odxL2n:PERSONAL_TOKEN::"
 				}
 			],
 			"logConfiguration": {

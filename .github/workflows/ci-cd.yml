@@ -35,6 +35,7 @@ jobs:
         run: |
           docker build \
             --build-arg DB_URL=${{ secrets.DB_URL }} \
+            --build-arg AUTH_TOKEN=${{ secrets.AUTH_TOKEN }} \
             -t $ECR_REGISTRY/stan/personal-website:$IMAGE_TAG \
             packages/web
           docker push $ECR_REGISTRY/stan/personal-website:$IMAGE_TAG

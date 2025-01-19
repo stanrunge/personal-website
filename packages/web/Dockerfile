@@ -7,6 +7,7 @@ RUN bun install
 COPY . .
 
 ARG DB_URL
+ARG AUTH_TOKEN
 
 
 RUN bun run build
