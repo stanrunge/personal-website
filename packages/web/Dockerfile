@@ -1,13 +1,15 @@
 FROM oven/bun AS builder
 
+RUN bun
+
 WORKDIR /app
 COPY package.json bun.lockb ./
 
 RUN bun install
 COPY . .
 
-ARG DB_URL
-ARG AUTH_TOKEN
+ENV DB_URL=''
+ENV AUTH_TOKEN=''
 
 
 RUN bun run build
