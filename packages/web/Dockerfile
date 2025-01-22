@@ -19,7 +19,7 @@ FROM oven/bun
 WORKDIR /app
 COPY --from=builder /app ./
 
-EXPOSE 3000
+EXPOSE 80
 
 ENV NODE_ENV=production
 
