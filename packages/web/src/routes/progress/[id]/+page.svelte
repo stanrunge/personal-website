@@ -1,44 +1,65 @@
 <script lang="ts">
+	import Check from 'lucide-svelte/icons/check';
+	import * as Command from '$lib/components/ui/command';
+	import * as Popover from '$lib/components/ui/popover';
+	import { Button } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils.js';
+	import { tick } from 'svelte';
+
 	let { data } = $props();
 
-	let addTopicsDropdownShown = $state(false);
+	let open = $state(false);
+	let value = $state('');
+	let triggerRef = $state<HTMLButtonElement>(null!);
+
+	// We want to refocus the trigger button when the user selects
+	// an item from the list so users can continue navigating the
+	// rest of the form with the keyboard.
+	function closeAndFocusTrigger() {
+		open = false;
+		tick().then(() => {
+			triggerRef.focus();
+		});
+	}
 </script>
 
 <h1 class="my-4 text-2xl font-bold text-center">{data.task?.name}</h1>
 
 <div class="my-4">
 	<div class="flex justify-center gap-4 items-center relative">
-		<h2 class="text-xl font-semibold">topics ({data.task?.tasksToTopics.length})</h2>
-		<div class="relative">
-			<button
-				class="px-2 py-1 rounded bg-green-500 text-white font-medium shadow"
-				onclick={() => (addTopicsDropdownShown = !addTopicsDropdownShown)}
-			>
-				+
-			</button>
-			{#if addTopicsDropdownShown}
-				<form
-					method="post"
-					action="?/addTopic"
-					class="absolute mt-2 rounded-xl bg-gray-100 p-2 shadow-md items-center flex flex-col"
-				>
-					<select name="topic-id" class="rounded p-2 border border-gray-300 my-2" required>
-						<option value="" disabled selected>select a topic</option>
-						{#each data.topics as topic}
-							{#if !data.task?.tasksToTopics.some((t) => t.topicId === topic.id)}
-								<option value={topic.id}>{topic.name}</option>
-							{/if}
-						{/each}
-					</select>
-					<button
-						type="submit"
-						class="ml-2 px-2 py-1 rounded bg-blue-500 text-white font-medium shadow"
-					>
-						Add
-					</button>
-				</form>
-			{/if}
-		</div>
+		<h2 class="text-xl font-semibold">Topics ({data.task?.tasksToTopics.length})</h2>
+
+		<Popover.Root bind:open>
+			<Popover.Trigger bind:ref={triggerRef}>
+				<Button variant="outline" class="justify-between" role="combobox" aria-expanded={open}>
+					+
+				</Button>
+			</Popover.Trigger>
+			<Popover.Content class="w-[200px] p-0">
+				<Command.Root>
+					<Command.Input placeholder="Search topic..." />
+					<Command.List>
+						<Command.Empty>No topic found.</Command.Empty>
+						<Command.Group>
+							{#each data.topics as topic}
+								<Command.Item
+									value={topic.id.toString()}
+									onSelect={() => {
+										value = topic.id.toString();
+										closeAndFocusTrigger();
+									}}
+								>
+									<Check
+										class={cn('mr-2 size-4', value !== topic.id.toString() && 'text-transparent')}
+									/>
+									{topic.name}
+								</Command.Item>
+							{/each}
+						</Command.Group>
+					</Command.List>
+				</Command.Root>
+			</Popover.Content>
+		</Popover.Root>
 	</div>
 
 	<div class="flex justify-center flex-wrap gap-2 my-1">

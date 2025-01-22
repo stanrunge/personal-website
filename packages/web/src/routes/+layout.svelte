@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
 
 	interface Props {
@@ -72,6 +73,7 @@
 
 	<!-- page content goes here -->
 	<main class="mx-auto py-8 px-4 max-w-5xl flex-grow">
+		<ModeWatcher />
 		{@render children?.()}
 	</main>
 
