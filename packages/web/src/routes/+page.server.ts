@@ -1,5 +1,3 @@
-import { AUTH_TOKEN } from '$env/static/private';
-
 export const actions = {
 	authenticate: async ({ request, cookies }) => {
 		const data = await request.formData();
@@ -12,7 +10,7 @@ export const actions = {
 			};
 		}
 
-		if (token !== AUTH_TOKEN) {
+		if (token !== process.env.AUTH_TOKEN) {
 			return {
 				status: 401,
 				body: { error: 'Invalid token' }
