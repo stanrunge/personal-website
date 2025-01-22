@@ -8,9 +8,6 @@ COPY package.json bun.lockb ./
 RUN bun install
 COPY . .
 
-ENV DB_URL=''
-ENV AUTH_TOKEN=''
-
 
 RUN bun run build
 
