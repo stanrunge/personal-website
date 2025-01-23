@@ -3,7 +3,7 @@
 
 	<div class="flex gap-4">
 		<label for="name">Name: </label>
-		<input type="text" name="name" class="border rounded text-black" />
+		<input type="text" name="name" class="border rounded" />
 	</div>
 
 	<button class="px-4 py-2 rounded bg-green-500 m-4">Submit</button>
