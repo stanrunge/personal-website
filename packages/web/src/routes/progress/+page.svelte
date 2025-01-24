@@ -22,7 +22,7 @@
 				<thead>
 					<tr class="border-b border-white">
 						<th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
-						<th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+						<th class="px-6 py-3 text-left text-sm font-semibold">Topics</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold">Progress</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold">Actions</th>
 					</tr>
@@ -36,8 +36,15 @@
 								</a>
 							</td>
 							<td class="px-6 py-2 border-b">
-								<a href={`/progress/${task.id}`} class="text-blue-500 hover:underline">
-									{task.type}
+								<a href={`/progress/${task.id}`} class="flex gap-2 flex-wrap">
+									{#each task.tasksToTopics as topic}
+										<div
+											class="relative bg-blue-500 text-white rounded-full px-2 py-1 shadow font-medium hover:bg-blue-600 transition cursor-pointer group"
+											title="Click for more details about {topic.topic.name}"
+										>
+											{topic.topic.name}
+										</div>
+									{/each}
 								</a>
 							</td>
 
