@@ -58,5 +58,22 @@ export const actions = {
 				.values({ taskId: Number(params.id), topicId })
 				.returning();
 		}
+	},
+	removeTopic: async ({ request, params }) => {
+		const data = await request.formData();
+
+		const topicId = Number(data.get('topic-id'));
+
+		const existing = await db.query.tasksToTopics.findFirst({
+			where: and(eq(tasksToTopics.taskId, Number(params.id)), eq(tasksToTopics.topicId, topicId))
+		});
+
+		if (existing) {
+			await db
+				.delete(tasksToTopics)
+				.where(
+					and(eq(tasksToTopics.taskId, Number(params.id)), eq(tasksToTopics.topicId, topicId))
+				);
+		}
 	}
 };
