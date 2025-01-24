@@ -10,7 +10,9 @@
 
 	let open = $state(false);
 	let value = $state('');
+	let search = $state('');
 	let triggerRef = $state<HTMLButtonElement>(null!);
+	let addTopicForms = $state<HTMLFormElement[]>([]);
 
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
@@ -37,23 +39,39 @@
 			</Popover.Trigger>
 			<Popover.Content class="w-[200px] p-0">
 				<Command.Root>
-					<Command.Input placeholder="Search topic..." />
+					<Command.Input bind:value={search} placeholder="Search topic..." />
 					<Command.List>
-						<Command.Empty>No topic found.</Command.Empty>
+						<Command.Empty
+							>{#if search && !data.topics.filter((t) => t.name?.includes(search)).length}
+								<form method="post" action="?/createTopic">
+									<input type="hidden" name="name" value={search} />
+									<button class="px-4 py-2 rounded bg-secondary">Add Topic</button>
+								</form>
+							{:else}No topic found.
+							{/if}</Command.Empty
+						>
 						<Command.Group>
-							{#each data.topics as topic}
-								<Command.Item
-									value={topic.id.toString()}
-									onSelect={() => {
-										value = topic.id.toString();
-										closeAndFocusTrigger();
-									}}
+							{#each data.topics.filter((t) => !search || t.name?.includes(search)) as topic}
+								<form
+									action="?/addTopic"
+									method="post"
+									bind:this={addTopicForms[topic.id]}
+									onsubmit={() => (value = topic.id.toString())}
 								>
-									<Check
-										class={cn('mr-2 size-4', value !== topic.id.toString() && 'text-transparent')}
-									/>
-									{topic.name}
-								</Command.Item>
+									<input type="hidden" name="topic-id" value={topic.id} />
+									<Command.Item
+										value={topic.id.toString()}
+										onSelect={async () => {
+											addTopicForms[topic.id].submit();
+											closeAndFocusTrigger();
+										}}
+									>
+										<Check
+											class={cn('mr-2 size-4', value !== topic.id.toString() && 'text-transparent')}
+										/>
+										{topic.name}
+									</Command.Item>
+								</form>
 							{/each}
 						</Command.Group>
 					</Command.List>
