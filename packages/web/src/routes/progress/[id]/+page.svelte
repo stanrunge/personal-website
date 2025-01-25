@@ -11,7 +11,7 @@
 	let open = $state(false);
 	let value = $state('');
 	let search = $state('');
-	let triggerRef = $state<HTMLButtonElement>(null!);
+	let triggerRef = $state<any>();
 	let addTopicForms = $state<HTMLFormElement[]>([]);
 
 	// We want to refocus the trigger button when the user selects
@@ -32,7 +32,7 @@
 		<h2 class="text-xl font-semibold">Topics ({data.task?.tasksToTopics.length})</h2>
 
 		<Popover.Root bind:open>
-			<Popover.Trigger bind:ref={triggerRef}>
+			<Popover.Trigger bind:this={triggerRef}>
 				<Button variant="outline" class="justify-between" role="combobox" aria-expanded={open}>
 					+
 				</Button>
