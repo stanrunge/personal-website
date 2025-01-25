@@ -41,17 +41,15 @@
 				<Command.Root>
 					<Command.Input bind:value={search} placeholder="Search topic..." />
 					<Command.List>
-						<Command.Empty
-							>{#if search && !data.topics.filter((t) => t.name?.includes(search)).length}
-								<form method="post" action="?/createTopic">
-									<input type="hidden" name="name" value={search} />
-									<button class="px-4 py-2 rounded bg-secondary">Add Topic</button>
-								</form>
-							{:else}No topic found.
-							{/if}</Command.Empty
-						>
+						<Command.Empty>
+							<form method="post" action="?/createTopic">
+								<input type="hidden" name="name" value={search} />
+								<button class="px-4 py-2 rounded bg-secondary">Add Topic</button>
+							</form>
+						</Command.Empty>
+
 						<Command.Group>
-							{#each data.topics.filter((t) => !search || t.name?.includes(search)) as topic}
+							{#each data.topics as topic}
 								<form
 									action="?/addTopic"
 									method="post"
@@ -60,8 +58,8 @@
 								>
 									<input type="hidden" name="topic-id" value={topic.id} />
 									<Command.Item
-										value={topic.id.toString()}
-										onSelect={async () => {
+										value={topic.name!}
+										onSelect={() => {
 											addTopicForms[topic.id].submit();
 											closeAndFocusTrigger();
 										}}
