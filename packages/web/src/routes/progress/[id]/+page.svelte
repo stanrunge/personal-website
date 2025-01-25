@@ -80,26 +80,32 @@
 	<div class="flex justify-center flex-wrap gap-2 my-1 relative">
 		{#if data.task?.tasksToTopics}
 			{#each data.task?.tasksToTopics as topic}
-				<div
-					class="relative bg-blue-500 text-white rounded-full px-2 py-1 shadow font-medium hover:bg-blue-600 transition cursor-pointer group"
-					title="Click for more details about {topic.topic.name}"
-				>
-					{topic.topic.name}
-					<form
-						action="?/removeTopic"
-						method="post"
-						class="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition"
+				<a href="/progress/topics/{topic.topic.id}">
+					<div
+						class="relative bg-blue-500 text-white rounded-full px-2 py-1 shadow font-medium hover:bg-blue-600 transition cursor-pointer group"
+						title="Click for more details about {topic.topic.name}"
 					>
-						<input type="hidden" name="topic-id" value={topic.topic.id} />
-						<button
-							type="submit"
-							class="bg-white text-red-500 hover:text-red-700 hover:bg-red-50 font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm"
-							aria-label="Remove topic"
+						{topic.topic.name}
+						<form
+							action="?/removeTopic"
+							method="post"
+							class="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition"
 						>
-							&times;
-						</button>
-					</form>
-				</div>
+							<input type="hidden" name="topic-id" value={topic.topic.id} />
+							<button
+								type="submit"
+								onclick={(e) => {
+									e.preventDefault();
+									e.target.closest('form')?.submit();
+								}}
+								class="bg-white text-red-500 hover:text-red-700 hover:bg-red-50 font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm"
+								aria-label="Remove topic"
+							>
+								&times;
+							</button>
+						</form>
+					</div>
+				</a>
 			{/each}
 		{/if}
 	</div>
