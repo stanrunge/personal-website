@@ -75,5 +75,16 @@ export const actions = {
 					and(eq(tasksToTopics.taskId, Number(params.id)), eq(tasksToTopics.topicId, topicId))
 				);
 		}
+	},
+	updateProgress: async ({ request, params }) => {
+		const data = await request.formData();
+
+		await db
+			.update(tasks)
+			.set({
+				currentPoints: Number(data.get('currentPoints')),
+				totalPoints: Number(data.get('totalPoints'))
+			})
+			.where(eq(tasks.id, Number(params.id)));
 	}
 };

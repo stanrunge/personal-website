@@ -23,6 +23,10 @@
 			triggerRef.focus();
 		});
 	}
+
+	function getProgress() {
+		return (data.task?.currentPoints / data.task?.totalPoints) * 100;
+	}
 </script>
 
 <h1 class="my-4 text-2xl font-bold text-center">{data.task?.name}</h1>
@@ -108,5 +112,36 @@
 				</a>
 			{/each}
 		{/if}
+	</div>
+</div>
+
+<div class="my-8">
+	<h2 class="text-xl font-semibold text-center mb-4">Progress ({getProgress().toFixed(2)}%)</h2>
+
+	<div class="flex items-center gap-4 max-w-xl mx-auto">
+		<form method="POST" action="?/updateProgress" class="flex items-center gap-4 w-full">
+			<input
+				type="number"
+				name="currentPoints"
+				value={data.task?.currentPoints}
+				class="w-20 p-2 border rounded"
+				min="0"
+				onchange={(e) => e.target.form?.submit()}
+			/>
+
+			<div class="flex-1">
+				<div class="w-full rounded-full h-4">
+					<progress max="100" value={getProgress()}>{getProgress()}%</progress>
+				</div>
+			</div>
+			<input
+				type="number"
+				name="totalPoints"
+				value={data.task?.totalPoints}
+				class="w-20 p-2 border rounded"
+				min="1"
+				onchange={(e) => e.target.form?.submit()}
+			/>
+		</form>
 	</div>
 </div>
