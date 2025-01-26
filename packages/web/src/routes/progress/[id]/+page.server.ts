@@ -83,7 +83,8 @@ export const actions = {
 			.update(tasks)
 			.set({
 				currentPoints: Number(data.get('currentPoints')),
-				totalPoints: Number(data.get('totalPoints'))
+				totalPoints: Number(data.get('totalPoints')),
+				updatedAt: new Date()
 			})
 			.where(eq(tasks.id, Number(params.id)));
 	}
