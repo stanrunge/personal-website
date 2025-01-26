@@ -96,7 +96,7 @@
 			action="/?/authenticate"
 			method="post"
 		>
-			<h2 class="text-lg font-semibold m-4">WHO ARE YOU?!?!?!??!</h2>
+			<h2 class="text-lg font-semibold m-4 text-black">WHO ARE YOU?!?!?!??!</h2>
 			<input type="text" class="border border-black rounded my-4" name="token" />
 			<button class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
 				Authenticate
