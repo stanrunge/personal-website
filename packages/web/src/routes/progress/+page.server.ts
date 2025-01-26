@@ -1,4 +1,6 @@
 import { db } from '$lib/db';
+import { tasks } from '$lib/db/schema.js';
+import { desc } from 'drizzle-orm';
 
 export const load = async ({ cookies }) => {
 	return {
@@ -9,7 +11,8 @@ export const load = async ({ cookies }) => {
 						topic: true
 					}
 				}
-			}
+			},
+			orderBy: [desc(tasks.updatedAt)]
 		}),
 		editable: cookies.get('token')
 	};
