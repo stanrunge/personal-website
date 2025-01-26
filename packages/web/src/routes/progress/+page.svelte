@@ -23,7 +23,7 @@
 					<tr class="border-b border-white">
 						<th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold">Topics</th>
-						<th class="px-6 py-3 text-left text-sm font-semibold">Progress</th>
+						<th class="px-6 py-3 text-left text-sm font-semibold min-w-[200px]">Progress</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold">Actions</th>
 					</tr>
 				</thead>
@@ -48,8 +48,19 @@
 								</a>
 							</td>
 
-							<td class="px-6 py-2 border-b">
-								{((task.currentPoints / task.totalPoints) * 100).toFixed(1)}%
+							<td class="px-6 py-2 border-b min-w-[200px]">
+								<div class="relative w-full h-6 bg-gray-700 rounded-full overflow-hidden">
+									<div
+										class="absolute h-full bg-green-500"
+										style="width: {(task.currentPoints / task.totalPoints) * 100}%"
+									/>
+									<span class="absolute inset-0 flex items-center justify-center text-sm">
+										{task.currentPoints} / {task.totalPoints} ({(
+											(task.currentPoints / task.totalPoints) *
+											100
+										).toFixed(1)}%)
+									</span>
+								</div>
 							</td>
 							<td class="px-6 py-2 border-b">
 								<button
