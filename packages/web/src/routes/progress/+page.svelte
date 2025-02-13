@@ -3,17 +3,20 @@
 </script>
 
 <div class="flex flex-col items-center p-4">
-	<div class="w-full max-w-4xl flex justify-center gap-8 items-center mt-4 mb-8">
-		<h1 class="font-bold text-2xl">
-			Tasks ({data.tasks.length})
-		</h1>
-		{#if data.editable}
-			<a href="/progress/create">
-				<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
-					Create
-				</button>
-			</a>
-		{/if}
+	<div class="w-full max-w-4xl flex flex-col gap-4 items-center mt-4 mb-8">
+		<div class="flex justify-center gap-8">
+			<h1 class="font-bold text-2xl">
+				Tasks ({data.tasks.length})
+			</h1>
+			{#if data.editable}
+				<a href="/progress/create">
+					<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
+						Create
+					</button>
+				</a>
+			{/if}
+		</div>
+		Total progress: {data.tasks.reduce((acc, task) => acc + task.currentPoints, 0)}
 	</div>
 
 	{#if data.tasks.length > 0}
