@@ -18,7 +18,8 @@ export const actions = {
 		}
 
 		cookies.set('token', token, {
-			path: '/'
+			path: '/',
+			maxAge: 60 * 60 * 24 * 7,
 		});
 
 		return {
