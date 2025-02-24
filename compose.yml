@@ -1,16 +1,4 @@
 services:
-  traefik:
-    image: traefik:v2.5
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   db:
     image: postgres
     environment:
@@ -28,11 +16,9 @@ services:
       - ./packages/web:/app
     working_dir: /app
     command: bun run dev --host
+    ports:
+      - "80:5173"
     env_file: .env
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.localhost.rule=Host(`localhost`)"
-      - "traefik.http.services.personal-website.loadbalancer.server.port=5173"
     develop:
       watch:
         - action: sync
