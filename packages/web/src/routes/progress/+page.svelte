@@ -16,7 +16,14 @@
 				</a>
 			{/if}
 		</div>
-		Total progress: {data.tasks.reduce((acc, task) => acc + task.currentPoints, 0)}
+		Total progress: {data.tasks.reduce((acc, task) => acc + task.currentPoints, 0)} / {data.tasks.reduce(
+			(acc, task) => acc + task.totalPoints,
+			0
+		)} ({(
+			(data.tasks.reduce((acc, task) => acc + task.currentPoints, 0) /
+				data.tasks.reduce((acc, task) => acc + task.totalPoints, 0)) *
+			100
+		).toFixed(1)}%)
 	</div>
 
 	{#if data.tasks.length > 0}
