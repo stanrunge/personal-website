@@ -37,9 +37,11 @@
 
 		<Popover.Root bind:open>
 			<Popover.Trigger bind:this={triggerRef}>
-				<Button variant="outline" class="justify-between" role="combobox" aria-expanded={open}>
-					+
-				</Button>
+				{#if data.editable}
+					<Button variant="outline" class="justify-between" role="combobox" aria-expanded={open}>
+						+
+					</Button>
+				{/if}
 			</Popover.Trigger>
 			<Popover.Content class="w-[200px] p-0">
 				<Command.Root>
@@ -126,6 +128,7 @@
 				value={data.task?.currentPoints}
 				class="w-20 p-2 border rounded"
 				min="0"
+				readonly={!data.editable}
 				onchange={(e) => e.target.form?.submit()}
 			/>
 
@@ -139,6 +142,7 @@
 				name="totalPoints"
 				value={data.task?.totalPoints}
 				class="w-20 p-2 border rounded"
+				readonly={!data.editable}
 				min="1"
 				onchange={(e) => e.target.form?.submit()}
 			/>

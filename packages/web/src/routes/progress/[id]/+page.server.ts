@@ -2,7 +2,7 @@ import { db } from '$lib/db';
 import { tasks, tasksToTopics, topics } from '$lib/db/schema';
 import { eq, and } from 'drizzle-orm';
 
-export const load = async ({ params }) => {
+export const load = async ({ cookies, params }) => {
 	return {
 		task: await db.query.tasks.findFirst({
 			with: {
@@ -14,7 +14,8 @@ export const load = async ({ params }) => {
 			},
 			where: eq(tasks.id, params.id)
 		}),
-		topics: await db.query.topics.findMany()
+		topics: await db.query.topics.findMany(),
+		editable: cookies.get('token')
 	};
 };
 
