@@ -20,7 +20,13 @@ export const load = async ({ cookies, params }) => {
 };
 
 export const actions = {
-	createTopic: async ({ request, params }) => {
+	createTopic: async ({ cookies, request, params }) => {
+		if (!cookies.get('token')) {
+			return { status: 401 };
+		}
+
+
+
 		const data = await request.formData();
 
 		const topic = await db
@@ -42,7 +48,11 @@ export const actions = {
 				.returning();
 		}
 	},
-	addTopic: async ({ request, params }) => {
+	addTopic: async ({ cookies, request, params }) => {
+		if (!cookies.get('token')) {
+			return { status: 401 };
+		}
+
 		const data = await request.formData();
 
 		const topicId = Number(data.get('topic-id'));
@@ -60,7 +70,11 @@ export const actions = {
 				.returning();
 		}
 	},
-	removeTopic: async ({ request, params }) => {
+	removeTopic: async ({ cookies, request, params }) => {
+		if (!cookies.get('token')) {
+			return { status: 401 };
+		}
+
 		const data = await request.formData();
 
 		const topicId = Number(data.get('topic-id'));
@@ -77,7 +91,11 @@ export const actions = {
 				);
 		}
 	},
-	updateProgress: async ({ request, params }) => {
+	updateProgress: async ({ cookies, request, params }) => {
+		if (!cookies.get('token')) {
+			return { status: 401 };
+		}
+
 		const data = await request.formData();
 
 		await db
