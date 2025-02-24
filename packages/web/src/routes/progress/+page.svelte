@@ -27,7 +27,6 @@
 						<th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold">Topics</th>
 						<th class="px-6 py-3 text-left text-sm font-semibold min-w-[200px]">Progress</th>
-						<th class="px-6 py-3 text-left text-sm font-semibold">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,15 +63,6 @@
 										).toFixed(1)}%)
 									</span>
 								</div>
-							</td>
-							<td class="px-6 py-2 border-b">
-								<button
-									onclick={() => {}}
-									class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
-									aria-label={`Delete task ${task.name}`}
-								>
-									Delete
-								</button>
 							</td>
 						</tr>
 					{/each}
