@@ -23,7 +23,7 @@
 			(data.tasks.reduce((acc, task) => acc + task.currentPoints, 0) /
 				data.tasks.reduce((acc, task) => acc + task.totalPoints, 0)) *
 			100
-		).toFixed(1)}%)
+		).toFixed(3)}%)
 	</div>
 
 	{#if data.tasks.length > 0}
