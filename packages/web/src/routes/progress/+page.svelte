@@ -64,7 +64,7 @@
 											<div
 												class="absolute h-full bg-green-500"
 												style="width: {(task.currentPoints / task.totalPoints) * 100}%"
-											/>
+											></div>
 											<span class="absolute inset-0 flex items-center justify-center text-sm">
 												{task.currentPoints} / {task.totalPoints} ({(
 													(task.currentPoints / task.totalPoints) *
@@ -107,7 +107,7 @@
 								<div
 									class="absolute h-full bg-green-500"
 									style="width: {(task.currentPoints / task.totalPoints) * 100}%"
-								/>
+								></div>
 								<span class="absolute inset-0 flex items-center justify-center text-xs">
 									{task.currentPoints} / {task.totalPoints} ({(
 										(task.currentPoints / task.totalPoints) *
