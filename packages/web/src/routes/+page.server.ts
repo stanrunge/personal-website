@@ -1,3 +1,5 @@
+import { env } from '$env/dynamic/private';
+
 export const actions = {
 	authenticate: async ({ request, cookies }) => {
 		const data = await request.formData();
@@ -10,7 +12,7 @@ export const actions = {
 			};
 		}
 
-		if (token !== process.env.AUTH_TOKEN) {
+		if (token !== env.AUTH_TOKEN) {
 			return {
 				status: 401,
 				body: { error: 'Invalid token' }
@@ -19,7 +21,7 @@ export const actions = {
 
 		cookies.set('token', token, {
 			path: '/',
-			maxAge: 60 * 60 * 24 * 7,
+			maxAge: 60 * 60 * 24 * 7
 		});
 
 		return {

@@ -6,7 +6,7 @@
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
-	const { children }: Props = $props();
+	const { children, data }: Props = $props();
 
 	let editModalVisible = $state(false);
 </script>
@@ -77,12 +77,14 @@
 		{@render children?.()}
 	</main>
 
-	<div class="flex justify-end">
-		<button
-			class="p-3 rounded border border-white m-4"
-			onclick={() => (editModalVisible = !editModalVisible)}>Edit</button
-		>
-	</div>
+	{#if !data.editable}
+		<div class="flex justify-end">
+			<button
+				class="p-3 rounded border border-white m-4"
+				onclick={() => (editModalVisible = !editModalVisible)}>Edit</button
+			>
+		</div>
+	{/if}
 </div>
 
 {#if editModalVisible}

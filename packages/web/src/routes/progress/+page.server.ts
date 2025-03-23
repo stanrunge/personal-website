@@ -13,7 +13,6 @@ export const load = async ({ cookies }) => {
 				}
 			},
 			orderBy: [desc(tasks.currentPoints)]
-		}),
-		editable: cookies.get('token')
+		})
 	};
 };
