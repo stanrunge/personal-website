@@ -25,8 +25,6 @@ export const actions = {
 			return { status: 401 };
 		}
 
-
-
 		const data = await request.formData();
 
 		const topic = await db
@@ -98,11 +96,31 @@ export const actions = {
 
 		const data = await request.formData();
 
+		const currentPoints =
+			Number(data.get('currentPoints')) <= Number(data.get('totalPoints'))
+				? Number(data.get('currentPoints'))
+				: Number(data.get('totalPoints'));
+
 		await db
 			.update(tasks)
 			.set({
-				currentPoints: Number(data.get('currentPoints')),
+				currentPoints,
 				totalPoints: Number(data.get('totalPoints')),
+				updatedAt: new Date()
+			})
+			.where(eq(tasks.id, Number(params.id)));
+	},
+	updateNotes: async ({ cookies, request, params }) => {
+		if (!cookies.get('token')) {
+			return { status: 401 };
+		}
+
+		const data = await request.formData();
+
+		await db
+			.update(tasks)
+			.set({
+				notes: data.get('notes') as string,
 				updatedAt: new Date()
 			})
 			.where(eq(tasks.id, Number(params.id)));

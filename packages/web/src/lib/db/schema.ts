@@ -1,20 +1,21 @@
 import { relations } from 'drizzle-orm';
 import { integer, pgSchema, serial, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const personalWebsiteSchema = pgSchema('personal_website')
+export const personalWebsiteSchema = pgSchema('personal_website');
 
 export const tasks = personalWebsiteSchema.table('tasks', {
 	id: serial('id').primaryKey(),
 	name: varchar('name', { length: 256 }),
 	currentPoints: integer('current_points').default(0),
 	totalPoints: integer('total_points').default(1),
+	notes: varchar('notes', { length: 8192 }),
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at').defaultNow()
 });
 
 export const tasksRelations = relations(tasks, ({ many }) => ({
 	tasksToTopics: many(tasksToTopics)
-}))
+}));
 
 export const topics = personalWebsiteSchema.table('topics', {
 	id: serial('id').primaryKey(),
@@ -35,7 +36,7 @@ export const tasksToTopics = personalWebsiteSchema.table('tasks_to_topics', {
 	topicId: integer('topic_id')
 		.notNull()
 		.references(() => topics.id)
-})
+});
 
 export const taskToTopicsRelations = relations(tasksToTopics, ({ one }) => ({
 	task: one(tasks, {
@@ -70,4 +71,3 @@ export const publications = personalWebsiteSchema.table('publications', {
 	createdAt: timestamp('created_at').defaultNow(),
 	updatedAt: timestamp('updated_at').defaultNow()
 });
-

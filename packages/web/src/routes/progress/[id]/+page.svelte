@@ -152,3 +152,23 @@
 		</form>
 	</div>
 </div>
+
+<div class="my-8">
+	<h2 class="text-xl font-semibold text-center mb-4">Notes</h2>
+
+	<form method="POST" action="?/updateNotes" class="max-w-xl mx-auto">
+		<textarea
+			name="notes"
+			class="w-full p-3 border rounded min-h-[150px] resize-y"
+			placeholder="Add notes about this task..."
+			readonly={!data.editable}
+			onchange={(e) => data.editable && e.target.form?.submit()}>{data.task?.notes || ''}</textarea
+		>
+
+		{#if data.editable}
+			<div class="flex justify-end mt-2">
+				<Button type="submit" size="sm">Save Notes</Button>
+			</div>
+		{/if}
+	</form>
+</div>
