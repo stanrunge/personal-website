@@ -47,37 +47,40 @@
 				<Command.Root>
 					<Command.Input bind:value={search} placeholder="Search topic..." />
 					<Command.List>
-						<Command.Empty>
+						<div class="flex flex-col items-center p-2">
+							<Command.Group>
+								{#each data.topics as topic}
+									<form
+										action="?/addTopic"
+										method="post"
+										bind:this={addTopicForms[topic.id]}
+										onsubmit={() => (value = topic.id.toString())}
+									>
+										<input type="hidden" name="topic-id" value={topic.id} />
+										<Command.Item
+											value={topic.name!}
+											onSelect={() => {
+												addTopicForms[topic.id].submit();
+												closeAndFocusTrigger();
+											}}
+										>
+											<Check
+												class={cn(
+													'mr-2 size-4',
+													value !== topic.id.toString() && 'text-transparent'
+												)}
+											/>
+											{topic.name}
+										</Command.Item>
+									</form>
+								{/each}
+							</Command.Group>
+
 							<form method="post" action="?/createTopic">
 								<input type="hidden" name="name" value={search} />
 								<button class="px-4 py-2 rounded bg-secondary">Add Topic</button>
 							</form>
-						</Command.Empty>
-
-						<Command.Group>
-							{#each data.topics as topic}
-								<form
-									action="?/addTopic"
-									method="post"
-									bind:this={addTopicForms[topic.id]}
-									onsubmit={() => (value = topic.id.toString())}
-								>
-									<input type="hidden" name="topic-id" value={topic.id} />
-									<Command.Item
-										value={topic.name!}
-										onSelect={() => {
-											addTopicForms[topic.id].submit();
-											closeAndFocusTrigger();
-										}}
-									>
-										<Check
-											class={cn('mr-2 size-4', value !== topic.id.toString() && 'text-transparent')}
-										/>
-										{topic.name}
-									</Command.Item>
-								</form>
-							{/each}
-						</Command.Group>
+						</div>
 					</Command.List>
 				</Command.Root>
 			</Popover.Content>
