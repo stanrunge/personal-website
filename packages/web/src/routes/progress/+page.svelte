@@ -63,7 +63,7 @@
 							<tr class="{index % 2 === 0 ? 'bg-black' : 'bg-gray-950'} hover:bg-gray-800">
 								<td class="px-6 py-2 border-b">
 									<a href={`/progress/${task.id}`} class="text-blue-500 hover:underline">
-										{task.name}
+										{index + 1}. {task.name}
 									</a>
 								</td>
 								<td class="px-6 py-2 border-b">
