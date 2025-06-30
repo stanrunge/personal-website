@@ -21,10 +21,36 @@ export default [
 	},
 	{
 		files: ['**/*.svelte'],
+
+		rules: {
+			'@typescript-eslint/explicit-function-return-type': [
+				'error',
+				{
+					allowExpressions: false,
+					allowTypedFunctionExpressions: true
+				}
+			]
+		},
+
 		languageOptions: {
 			parserOptions: {
 				parser: ts.parser
 			}
+		}
+	},
+	{
+		files: ['**/*.ts'],
+		languageOptions: {
+			globals: globals.node
+		},
+		rules: {
+			'@typescript-eslint/explicit-function-return-type': [
+				'error',
+				{
+					allowExpressions: false,
+					allowTypedFunctionExpressions: true
+				}
+			]
 		}
 	},
 	{
