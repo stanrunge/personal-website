@@ -19,6 +19,13 @@
 			<h1 class="font-bold text-2xl">
 				Tasks ({data.tasks.length})
 			</h1>
+
+			<a href="/progress/topics">
+				<button class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-600 transition">
+					Topics
+				</button>
+			</a>
+
 			{#if data.editable}
 				<a href="/progress/create">
 					<button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
@@ -59,12 +66,12 @@
 						</tr>
 					</thead>
 					<tbody>
-                                                {#each filteredTasks as task, index}
-                                                        <tr class="{index % 2 === 0 ? 'bg-black' : 'bg-gray-950'} hover:bg-gray-800">
-                                                                <td class="px-6 py-2 border-b">
-                                                                        <a href={`/progress/${task.id}`} class="text-blue-500 hover:underline">
-                                                                                {data.tasks.indexOf(task) + 1}. {task.name}
-                                                                        </a>
+						{#each filteredTasks as task, index}
+							<tr class="{index % 2 === 0 ? 'bg-black' : 'bg-gray-950'} hover:bg-gray-800">
+								<td class="px-6 py-2 border-b">
+									<a href={`/progress/${task.id}`} class="text-blue-500 hover:underline">
+										{data.tasks.indexOf(task) + 1}. {task.name}
+									</a>
 								</td>
 								<td class="px-6 py-2 border-b">
 									<a href={`/progress/${task.id}`} class="flex gap-2 flex-wrap">

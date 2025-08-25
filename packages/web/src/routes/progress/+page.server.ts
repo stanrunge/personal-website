@@ -2,7 +2,7 @@ import { db } from '$lib/db';
 import { tasks } from '$lib/db/schema.js';
 import { desc } from 'drizzle-orm';
 
-export const load = async ({ cookies }) => {
+export const load = async () => {
 	return {
 		tasks: await db.query.tasks.findMany({
 			with: {
