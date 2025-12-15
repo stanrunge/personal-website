@@ -8,14 +8,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql
 
   sveltekit:
     image: oven/bun
     volumes:
       - ./packages/web:/app
     working_dir: /app
-    command: bun run dev --host
+    command: sh -c "bun install & bun run dev --host"
     ports:
       - "3000:5173"
     env_file: .env
