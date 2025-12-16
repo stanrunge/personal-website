@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import * as Table from '$lib/components/ui/table/index.js';
 
 	let { data } = $props();
@@ -14,7 +15,10 @@
 	</Table.Header>
 	<Table.Body>
 		{#each data.topics as topic}
-			<Table.Row>
+			<Table.Row
+				onclick={() => goto(`/progress/topics/${topic.id}`)}
+				class="cursor-pointer hover:bg-muted/50"
+			>
 				<Table.Cell class="font-medium">{topic.name}</Table.Cell>
 				<Table.Cell>{topic.topicsToTasks.length}</Table.Cell>
 
